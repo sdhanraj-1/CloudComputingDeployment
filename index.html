@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB Documents</title>
+</head>
+<body>
+    <h1>MongoDB Documents</h1>
+    <ul>
+        <% for (const doc of documents) { %>
+            <li><%= JSON.stringify(doc) %></li>
+        <% } %>
+    </ul>
+</body>
+</html>
+

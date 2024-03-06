@@ -1,0 +1,17 @@
+{
+  "name": "your-node-app",
+  "version": "1.0.0",
+  "description": "Your Node.js application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^4.4.0",
+    "ejs": "^3.1.6"
+  }
+}
+
