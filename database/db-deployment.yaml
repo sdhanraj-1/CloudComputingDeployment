@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ece9016-mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      containers:
+      - name: mongodb
+        image: mongo:latest
+        ports:
+        - containerPort: 27017
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: adminUser
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value: cloudcomputingrocks
+        volumeMounts:
+        - name: ece-9016-pvc
+          mountPath: /data/db # MongoDB default data directory
+      volumes:
+      - name: ece-9016-pvc
+        persistentVolumeClaim:
+          claimName: ece-9016-pvc
