@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-fetch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-fetch
+  template:
+    metadata:
+      labels:
+        app: node-fetch
+    spec:
+      containers:
+        - name: node-fetch
+          image: northamerica-northeast2-docker.pkg.dev/real-estate-group-416222/docker-rep2/node-fetch-image
+          ports:
+            - containerPort: 80
