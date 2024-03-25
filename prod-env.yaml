@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-fetch-production
+spec:
+  replicas: 2  # one replica for each of the two worker nodes
+  selector:
+    matchLabels:
+      app: node-fetch
+  template:
+    metadata:
+      labels:
+        app: node-fetch
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values:
+                - node-fetch
+      containers:
+      - name: node-fetch
+        image: northamerica-northeast2-docker.pkg.dev/real-estate-group-416222/docker-rep2/node-fetch-image (?)
+        ports:
+        - containerPort: 80
+
